@@ -2,12 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "77184b4f21bd7a1acdcf",
   "position": {
-    "x": 35.926592299388268,
-    "y": 784.85786254048219,
+    "x": 16.581504138179202,
+    "y": 454.7607052896725,
     "z": 15000,
-    "height": 66.3260165527168,
-    "width": 214.17776178481466,
-    "tabOrder": 14000
+    "height": 61.662468513853888,
+    "width": 214.17776178481466
   },
   "visual": {
     "visualType": "slicer",
@@ -77,5 +76,82 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "2d55cd122848273d2bec",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "fe2da2251d95b1e1eac6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_clubs_ligues"
+              }
+            },
+            "Property": "zone_geo"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "dim_clubs_ligues",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "zone_geo"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }

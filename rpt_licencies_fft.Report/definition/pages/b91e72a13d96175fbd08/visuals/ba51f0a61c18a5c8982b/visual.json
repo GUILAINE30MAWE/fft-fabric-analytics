@@ -77,5 +77,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "09278defad6ad3361d84",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fct_licences"
+              }
+            },
+            "Property": "discipline"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }
