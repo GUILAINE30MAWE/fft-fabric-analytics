@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "rpt_licencies_fft"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2eee41e3-7d1b-9406-4b56-a0a8ee37e17e"
+  }
+}

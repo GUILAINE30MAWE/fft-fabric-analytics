@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "3f64f765ca11bb785f2b",
+  "position": {
+    "x": 741.30434782608688,
+    "y": 1043.4782608695652,
+    "z": 3000,
+    "height": 36.95652173913043,
+    "width": 565.21739130434776,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "NB:",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "14pt",
+                      "textDecoration": "underline",
+                      "color": "#de6a73"
+                    }
+                  },
+                  {
+                    "value": " Saison 2027 en cours, données arrêtées au 20 octobre 2026",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "14pt",
+                      "color": "#de6a73"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

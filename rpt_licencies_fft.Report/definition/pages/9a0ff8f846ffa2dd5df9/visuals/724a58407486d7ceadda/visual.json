@@ -1,0 +1,116 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "724a58407486d7ceadda",
+  "position": {
+    "x": 290.66666666666669,
+    "y": 690.66666666666663,
+    "z": 10000,
+    "height": 297.33333333333331,
+    "width": 1566.6666666666667,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_licences"
+                    }
+                  },
+                  "Property": "saison"
+                }
+              },
+              "queryRef": "fct_licences.saison",
+              "nativeQueryRef": "saison",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_calendrier"
+                    }
+                  },
+                  "Property": "mois_de_saison"
+                }
+              },
+              "queryRef": "dim_calendrier.mois_de_saison",
+              "nativeQueryRef": "mois_de_saison",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Mesures"
+                    }
+                  },
+                  "Property": "Licences"
+                }
+              },
+              "queryRef": "Mesures.Licences",
+              "nativeQueryRef": "Licences"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Mesures"
+                    }
+                  },
+                  "Property": "Licences N-1"
+                }
+              },
+              "queryRef": "Mesures.Licences N-1",
+              "nativeQueryRef": "Licences N-1"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_licences"
+                  }
+                },
+                "Property": "saison"
+              }
+            },
+            "direction": "Ascending"
+          },
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_calendrier"
+                  }
+                },
+                "Property": "mois_de_saison"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
