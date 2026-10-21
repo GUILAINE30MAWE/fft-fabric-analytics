@@ -1,0 +1,135 @@
+table Mesures
+	lineageTag: a95ed04a-1707-4528-b339-d8481156f390
+
+	/// Nombre de licences validées sur la saison
+	/// (dans ce jeu de données, une licence = un
+	/// licencié par saison).
+	/// 
+	/// Nombre de lignes de fct_licences
+	/// 
+	/// 
+	measure Licences = ```
+			COUNTROWS ( fct_licences )
+			
+			```
+		formatString: 0
+		lineageTag: 1b122fc6-badd-49db-894f-8cf1134b71d2
+
+	/// Nombre de licences validées sur la saison précédente
+	/// (dans ce jeu de données, une licence = un
+	/// licencié par saison).
+	measure 'Licences N-1' = ```
+			
+			VAR SaisonChoisie = MAX ( fct_licences[saison] )
+			RETURN
+			CALCULATE ( [Licences],
+			REMOVEFILTERS ( fct_licences[saison] ),
+			fct_licences[saison] = SaisonChoisie - 1 )
+			
+			```
+		formatString: 0
+		lineageTag: e4dc0378-0f32-4a86-ac70-35c5a5a39f3d
+
+	/// Variation du nombre de licences par
+	/// rapport à la saison précédente, à
+	/// périmètre identique
+	/// 
+	/// (Licences − Licences N-1) / Licences N-1
+	measure 'Évolution N-1 %' = ```
+			DIVIDE ( [Licences] - [Licences N-1], [Licences N-1] )
+			
+			```
+		lineageTag: 4acdfd63-5f2d-4f67-9b74-6463894c3847
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Licenciés qui n’avaient aucune licence sur
+	/// les saisons précédentes connues
+	measure 'Primo licenciés' = ```
+			SUM ( fct_licences[flag_nouveau] )
+			
+			```
+		formatString: 0
+		lineageTag: aa8488f1-363c-4a3b-8f66-077dbc1fe0fd
+
+	/// Licenciés avec au moins une licence sur
+	/// les saisons précédentes connues.
+	/// 
+	/// Somme de flag_nouveau
+	measure 'Licences Renouvelées' = ```
+			SUM ( fct_licences[flag_renouvele] )
+			
+			```
+		formatString: 0
+		lineageTag: c5bcd333-4283-4ae2-81d2-c5267f57a7b2
+
+	/// Part des licenciés de la saison précédente
+	/// qui ont repris une licence.
+	/// 
+	/// Somme de flag_renouvele / Licences N-1
+	/// 
+	/// 
+	measure 'Taux de rétention %' = ```
+			DIVIDE ( [Licences Renouvelées], [Licences N-1] )
+			
+			```
+		lineageTag: 4028f552-ac1f-4989-97a2-be5d724e9e16
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Part des licenciés de la saison précédente
+	/// qui n’ont pas repris de licence.
+	/// 
+	/// 1 − Taux de rétention
+	/// 
+	measure 'Taux de churn %' = IF ( NOT ISBLANK ( [Taux de rétention %] ), 1 - [Taux de rétention %] )
+		lineageTag: a62aa6dc-9257-446d-95f9-fd84f7f3827e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Part des licences dont la discipline
+	/// principale est le padel.
+	/// 
+	/// Somme de flag_padel / Licences
+	/// 
+	measure 'Part du padel %' = ```
+			DIVIDE ( SUM ( fct_licences[flag_padel] ), [Licences] )
+			
+			```
+		lineageTag: 05cf674d-cfa9-4bb3-b4fc-77a0aa550cf1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// CA
+	measure 'Montant (€)' = ```
+			SUM ( fct_licences[montant_licence_eur] )
+			
+			```
+		formatString: #,0.###############\ "€";-#,0.###############\ "€";#,0.###############\ "€"
+		lineageTag: 1a41b909-0fbc-45e7-9bf0-8b1901d06e37
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr"}
+
+	measure 'Utilisateur connecté' = ```
+			"Connecté : " & LOWER ( USERPRINCIPALNAME () )
+			
+			```
+		lineageTag: ff19b5eb-f815-427f-8a89-2dc184a1f9c3
+
+	column Column
+		formatString: 0
+		lineageTag: ccd27f45-e582-489f-81b7-4493d5b2937d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Mesures = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 9bde5cdd164e4f149718d1cfa0a52513
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

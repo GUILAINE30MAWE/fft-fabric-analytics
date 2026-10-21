@@ -1,0 +1,163 @@
+table fct_licences
+	lineageTag: 3a785f47-7089-483b-a6b9-dc46a4f77658
+	sourceLineageTag: [dbo].[fct_licences]
+
+	column id_souscription
+		dataType: string
+		lineageTag: 4707cf8f-1ace-44be-b532-ff8ef553ca54
+		sourceLineageTag: id_souscription
+		summarizeBy: none
+		sourceColumn: id_souscription
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_licencie
+		dataType: string
+		lineageTag: 1f0d141b-6d3e-4f54-ade8-84794fab64e8
+		sourceLineageTag: id_licencie
+		summarizeBy: none
+		sourceColumn: id_licencie
+
+		annotation SummarizationSetBy = Automatic
+
+	column saison
+		dataType: int64
+		formatString: 0
+		lineageTag: 98dd5dad-9f90-493d-8e4e-9fbc0dccf4cc
+		sourceLineageTag: saison
+		summarizeBy: sum
+		sourceColumn: saison
+
+		annotation SummarizationSetBy = Automatic
+
+	column code_club
+		dataType: string
+		lineageTag: 9c929f58-2ff5-44ea-8871-45f840a53660
+		sourceLineageTag: code_club
+		summarizeBy: none
+		sourceColumn: code_club
+
+		annotation SummarizationSetBy = Automatic
+
+	column code_ligue
+		dataType: string
+		lineageTag: 0b35c30a-810f-48a3-b739-d1c7d2de767f
+		sourceLineageTag: code_ligue
+		summarizeBy: none
+		sourceColumn: code_ligue
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_key
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b95f1f31-936d-43f7-9a3b-e61e1875136c
+		sourceLineageTag: date_key
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column genre
+		dataType: string
+		lineageTag: ce919eb8-b105-417b-a2fe-6c9583d6d673
+		sourceLineageTag: genre
+		summarizeBy: none
+		sourceColumn: genre
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_saison
+		dataType: int64
+		formatString: 0
+		lineageTag: 80f6e8fd-6c64-4af7-bde1-a20d1a5933a8
+		sourceLineageTag: age_saison
+		summarizeBy: sum
+		sourceColumn: age_saison
+
+		annotation SummarizationSetBy = Automatic
+
+	column categorie_age
+		dataType: string
+		lineageTag: 4127ab85-5a06-45cf-a4de-8d6690e6228f
+		sourceLineageTag: categorie_age
+		summarizeBy: none
+		sourceColumn: categorie_age
+
+		annotation SummarizationSetBy = Automatic
+
+	column discipline
+		dataType: string
+		lineageTag: 161ceed4-ff30-4785-b5c2-2ba601aaadc2
+		sourceLineageTag: discipline
+		summarizeBy: none
+		sourceColumn: discipline
+
+		annotation SummarizationSetBy = Automatic
+
+	column type_licence
+		dataType: string
+		lineageTag: 24e6d94d-2dbf-42f3-b9c7-b63ada69b8d4
+		sourceLineageTag: type_licence
+		summarizeBy: none
+		sourceColumn: type_licence
+
+		annotation SummarizationSetBy = Automatic
+
+	column statut_fidelite
+		dataType: string
+		lineageTag: f92793d4-0969-4cf6-a43a-7ac7d85d0b35
+		sourceLineageTag: statut_fidelite
+		summarizeBy: none
+		sourceColumn: statut_fidelite
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_renouvele
+		dataType: int64
+		formatString: 0
+		lineageTag: 3036683c-13e3-422d-8c3f-4486d18ff8dd
+		sourceLineageTag: flag_renouvele
+		summarizeBy: sum
+		sourceColumn: flag_renouvele
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_nouveau
+		dataType: int64
+		formatString: 0
+		lineageTag: 72e9a787-4aac-44c2-bfa4-c6707a74778c
+		sourceLineageTag: flag_nouveau
+		summarizeBy: sum
+		sourceColumn: flag_nouveau
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_padel
+		dataType: int64
+		formatString: 0
+		lineageTag: b397ea9b-2012-4772-abd2-99eac205c7fe
+		sourceLineageTag: flag_padel
+		summarizeBy: sum
+		sourceColumn: flag_padel
+
+		annotation SummarizationSetBy = Automatic
+
+	column montant_licence_eur
+		dataType: decimal
+		formatString: #,0.###############\ "€";-#,0.###############\ "€";#,0.###############\ "€"
+		lineageTag: 1b652c7b-24b1-46b3-9a72-84d16f7e5659
+		sourceLineageTag: montant_licence_eur
+		summarizeBy: sum
+		sourceColumn: montant_licence_eur
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr"}
+
+	partition fct_licences = entity
+		mode: directLake
+		source
+			entityName: fct_licences
+			expressionSource: 'DirectLake - lh_fft_licences'
+

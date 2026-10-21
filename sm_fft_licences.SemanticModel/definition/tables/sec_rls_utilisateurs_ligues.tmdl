@@ -1,0 +1,37 @@
+table sec_rls_utilisateurs_ligues
+	lineageTag: 5567ff37-3957-4b1c-899c-526197ad7be5
+	sourceLineageTag: [dbo].[sec_rls_utilisateurs_ligues]
+
+	column email_user
+		dataType: string
+		lineageTag: 8b1ad2d2-1877-41f0-bc71-148707b590d1
+		sourceLineageTag: email_user
+		summarizeBy: none
+		sourceColumn: email_user
+
+		annotation SummarizationSetBy = Automatic
+
+	column code_ligue
+		dataType: string
+		lineageTag: 61131590-4c28-4f28-8cee-21499a457e59
+		sourceLineageTag: code_ligue
+		summarizeBy: none
+		sourceColumn: code_ligue
+
+		annotation SummarizationSetBy = Automatic
+
+	column role_description
+		dataType: string
+		lineageTag: 333f9f5a-91ba-40c3-ae23-fd5a1922df33
+		sourceLineageTag: role_description
+		summarizeBy: none
+		sourceColumn: role_description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sec_rls_utilisateurs_ligues = entity
+		mode: directLake
+		source
+			entityName: sec_rls_utilisateurs_ligues
+			expressionSource: 'DirectLake - lh_fft_licences'
+

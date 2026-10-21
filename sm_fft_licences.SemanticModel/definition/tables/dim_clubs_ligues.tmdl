@@ -1,0 +1,84 @@
+table dim_clubs_ligues
+	lineageTag: 644c957a-fc7f-4bee-a863-3558debb5f31
+	sourceLineageTag: [dbo].[dim_clubs_ligues]
+
+	column code_club
+		dataType: string
+		lineageTag: 6cd245c6-a9be-402b-87af-5f65a27db81a
+		sourceLineageTag: code_club
+		summarizeBy: none
+		sourceColumn: code_club
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_club
+		dataType: string
+		lineageTag: a593bc34-2f7e-4a4a-b54a-7ce9206a4362
+		sourceLineageTag: nom_club
+		summarizeBy: none
+		sourceColumn: nom_club
+
+		annotation SummarizationSetBy = Automatic
+
+	column code_ligue
+		dataType: string
+		lineageTag: eb63d05c-814d-4f74-bc7b-0d3eb2f7cabc
+		sourceLineageTag: code_ligue
+		summarizeBy: none
+		sourceColumn: code_ligue
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_ligue
+		dataType: string
+		lineageTag: db1b2e73-82b5-424d-aa37-b54121075f2a
+		sourceLineageTag: nom_ligue
+		summarizeBy: none
+		sourceColumn: nom_ligue
+
+		annotation SummarizationSetBy = Automatic
+
+	column zone_geo
+		dataType: string
+		lineageTag: 3d1d1b50-fed8-4093-b720-90167ab9d69f
+		sourceLineageTag: zone_geo
+		summarizeBy: none
+		sourceColumn: zone_geo
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_courts_tennis
+		dataType: int64
+		formatString: 0
+		lineageTag: dadac38b-1987-4e2b-9861-2d6dc29d3acc
+		sourceLineageTag: nb_courts_tennis
+		summarizeBy: none
+		sourceColumn: nb_courts_tennis
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_pistes_padel
+		dataType: int64
+		formatString: 0
+		lineageTag: 53b71427-581d-4980-a13d-cdf990b88180
+		sourceLineageTag: nb_pistes_padel
+		summarizeBy: none
+		sourceColumn: nb_pistes_padel
+
+		annotation SummarizationSetBy = Automatic
+
+	column equipement_padel
+		dataType: string
+		lineageTag: 70c325a0-4ad6-41cf-aa00-efef4adc74b2
+		sourceLineageTag: equipement_padel
+		summarizeBy: none
+		sourceColumn: equipement_padel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_clubs_ligues = entity
+		mode: directLake
+		source
+			entityName: dim_clubs_ligues
+			expressionSource: 'DirectLake - lh_fft_licences'
+

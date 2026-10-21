@@ -1,0 +1,8 @@
+relationship 32652d3e-a779-e36c-4087-f31f2b53a72c
+	fromColumn: fct_licences.code_club
+	toColumn: dim_clubs_ligues.code_club
+
+relationship c99c251d-c1fb-a1fe-bc4a-a2631cb21e0d
+	fromColumn: fct_licences.date_key
+	toColumn: dim_calendrier.date_key
+
