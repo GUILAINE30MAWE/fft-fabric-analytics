@@ -1,0 +1,12 @@
+role 'Ligue dynamique'
+	modelPermission: read
+
+	tablePermission dim_clubs_ligues =
+			[code_ligue]
+			IN CALCULATETABLE (
+			VALUES ( sec_rls_utilisateurs_ligues[code_ligue] ),
+			sec_rls_utilisateurs_ligues[email_user] = LOWER ( USERPRINCIPALNAME () )
+			)
+
+	annotation PBI_Id = d7503e10a1804821916e0247a953e08e
+

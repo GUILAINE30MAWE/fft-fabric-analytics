@@ -18,3 +18,5 @@ ref table fct_licences
 ref table sec_rls_utilisateurs_ligues
 ref table Mesures
 
+ref role 'Ligue dynamique'
+
