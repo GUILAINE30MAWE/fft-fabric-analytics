@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fct_licences"
+                      "Entity": "dim_calendrier"
                     }
                   },
-                  "Property": "saison"
+                  "Property": "mois_de_saison"
                 }
               },
-              "queryRef": "fct_licences.saison",
-              "nativeQueryRef": "saison",
+              "queryRef": "dim_calendrier.mois_de_saison",
+              "nativeQueryRef": "mois_de_saison",
               "active": true
             },
             {
@@ -38,12 +38,35 @@
                       "Entity": "dim_calendrier"
                     }
                   },
-                  "Property": "mois_de_saison"
+                  "Property": "Nom du Mois"
                 }
               },
-              "queryRef": "dim_calendrier.mois_de_saison",
-              "nativeQueryRef": "mois_de_saison",
+              "queryRef": "dim_calendrier.Nom du Mois",
+              "nativeQueryRef": "Nom du Mois",
               "active": true
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dim_calendrier"
+                        }
+                      },
+                      "Property": "Nom du Mois"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(dim_calendrier.Nom du Mois)",
+              "nativeQueryRef": "Premier Nom du Mois"
             }
           ]
         },
@@ -111,6 +134,127 @@
         ]
       }
     },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Evolution des Licences VS Licences N-1'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1f0952c3bb633ba2c6bd",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Mesures"
+              }
+            },
+            "Property": "Licences"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cd0fdf411599fe9ef8e0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Mesures"
+              }
+            },
+            "Property": "Licences N-1"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d44135abc50c4032165e",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_calendrier"
+                  }
+                },
+                "Property": "Nom du Mois"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9211d7c6aa9136e91f52",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_calendrier"
+              }
+            },
+            "Property": "mois_de_saison"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "25633c15d23c9e4aeb7f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_calendrier"
+              }
+            },
+            "Property": "Nom du Mois"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }
